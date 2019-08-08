@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		228297A422FC99F3004495A5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228297A322FC99F3004495A5 /* Utils.swift */; };
+		228297A622FC9A0F004495A5 /* PBZX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228297A522FC9A0F004495A5 /* PBZX.swift */; };
 		22C4B7E722FA948F00108CAB /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C4B7E622FA948F00108CAB /* main.swift */; };
-		22DA90B422FBD8AC000A86CB /* BXDIFF50_Patch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA90B322FBD8AC000A86CB /* BXDIFF50_Patch.swift */; };
-		22DA90B622FBD8E0000A86CB /* BXDIFF_Control.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA90B522FBD8E0000A86CB /* BXDIFF_Control.swift */; };
-		22DA90B822FBD8F5000A86CB /* BXPatchAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA90B722FBD8F5000A86CB /* BXPatchAgent.swift */; };
+		22DA90B422FBD8AC000A86CB /* Patch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA90B322FBD8AC000A86CB /* Patch.swift */; };
+		22DA90B622FBD8E0000A86CB /* Control.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA90B522FBD8E0000A86CB /* Control.swift */; };
+		22DA90B822FBD8F5000A86CB /* PatchSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DA90B722FBD8F5000A86CB /* PatchSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,11 +28,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		228297A322FC99F3004495A5 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = ../../../../../System/Volumes/Data/Users/salman/Downloads/bxdiff50/bxdiff50/Utils.swift; sourceTree = "<group>"; };
+		228297A522FC9A0F004495A5 /* PBZX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PBZX.swift; path = ../../../../../System/Volumes/Data/Users/salman/Downloads/bxdiff50/bxdiff50/PBZX.swift; sourceTree = "<group>"; };
 		22C4B7E322FA948F00108CAB /* bxdiff50 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = bxdiff50; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C4B7E622FA948F00108CAB /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		22DA90B322FBD8AC000A86CB /* BXDIFF50_Patch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXDIFF50_Patch.swift; sourceTree = "<group>"; };
-		22DA90B522FBD8E0000A86CB /* BXDIFF_Control.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXDIFF_Control.swift; sourceTree = "<group>"; };
-		22DA90B722FBD8F5000A86CB /* BXPatchAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BXPatchAgent.swift; sourceTree = "<group>"; };
+		22DA90B322FBD8AC000A86CB /* Patch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patch.swift; sourceTree = "<group>"; };
+		22DA90B522FBD8E0000A86CB /* Control.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Control.swift; sourceTree = "<group>"; };
+		22DA90B722FBD8F5000A86CB /* PatchSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,9 +68,11 @@
 			isa = PBXGroup;
 			children = (
 				22C4B7E622FA948F00108CAB /* main.swift */,
-				22DA90B322FBD8AC000A86CB /* BXDIFF50_Patch.swift */,
-				22DA90B522FBD8E0000A86CB /* BXDIFF_Control.swift */,
-				22DA90B722FBD8F5000A86CB /* BXPatchAgent.swift */,
+				22DA90B322FBD8AC000A86CB /* Patch.swift */,
+				22DA90B522FBD8E0000A86CB /* Control.swift */,
+				22DA90B722FBD8F5000A86CB /* PatchSession.swift */,
+				228297A322FC99F3004495A5 /* Utils.swift */,
+				228297A522FC9A0F004495A5 /* PBZX.swift */,
 			);
 			path = bxdiff50;
 			sourceTree = "<group>";
@@ -129,9 +135,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22DA90B622FBD8E0000A86CB /* BXDIFF_Control.swift in Sources */,
-				22DA90B422FBD8AC000A86CB /* BXDIFF50_Patch.swift in Sources */,
-				22DA90B822FBD8F5000A86CB /* BXPatchAgent.swift in Sources */,
+				228297A422FC99F3004495A5 /* Utils.swift in Sources */,
+				22DA90B622FBD8E0000A86CB /* Control.swift in Sources */,
+				22DA90B422FBD8AC000A86CB /* Patch.swift in Sources */,
+				228297A622FC9A0F004495A5 /* PBZX.swift in Sources */,
+				22DA90B822FBD8F5000A86CB /* PatchSession.swift in Sources */,
 				22C4B7E722FA948F00108CAB /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

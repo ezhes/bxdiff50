@@ -50,20 +50,6 @@
             ReferencedContainer = "container:bxdiff50.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <CommandLineArguments>
-         <CommandLineArgument
-            argument = "/Users/Salman/Downloads/c1cc5c87b52523ccc1d226306ec39ed389bde607/AssetData/payloadv2/patches/System/Library/Caches/com.apple.dyld/dyld_shared_cache_arm64"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "/Users/Salman/Downloads/source_ota_extract/System/Library/Caches/com.apple.dyld/dyld_shared_cache_arm64"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "/tmp/out"
-            isEnabled = "YES">
-         </CommandLineArgument>
-      </CommandLineArguments>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

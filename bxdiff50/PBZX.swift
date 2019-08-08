@@ -1,119 +1,18 @@
 //
-//  BXDIFF50_Patch.swift
-//  BXDIFF50-Swift
+//  PBZX.swift
+//  bxdiff50
 //
-//  Created by Salman Husain on 8/7/19.
+//  Created by Salman Husain on 8/8/19.
 //  Copyright © 2019 Salman Husain. All rights reserved.
 //
 
 import Foundation
 import Compression
 
-class BXDIFF50_Patch {
-    public let patchedFileSize:uint64
-    public let controlSize:uint64
-    public let extraSize:uint64
-    public let resultSHA1:[uint8]
-    public let diffSize:uint64
-    public let targetSHA1:[uint8]
-    
-    public let controlData:Data
-    public let diffData:Data
-    public let extraData:Data
-    
-    private let data:Data
-    
-    init?(data:Data) {
-        self.data = data
-        
-        let uint64_size:uint64 = 8
-        var position:uint64 = 0
-        //skip magic
-        position += 8
-        //skip unknown
-        position += uint64_size
-        
-        patchedFileSize = BXDIFF50_Patch.readUINT64(from: data, offset: position, bigEndian: false)
-        position += uint64_size
-        
-        controlSize = BXDIFF50_Patch.readUINT64(from: data, offset: position, bigEndian: false)
-        position += uint64_size
-        
-        extraSize = BXDIFF50_Patch.readUINT64(from: data, offset: position, bigEndian: false)
-        position += uint64_size
-        
-        resultSHA1 = BXDIFF50_Patch.readUINT8Array(from: data, count: 20, offset: position)
-        position += 20
-        
-        diffSize = BXDIFF50_Patch.readUINT64(from: data, offset: position, bigEndian: false)
-        position += uint64_size
-        
-        targetSHA1 = BXDIFF50_Patch.readUINT8Array(from: data, count: 20, offset: position)
-        position += 20
-        
-        //Validate the header size reports against the actuall file size
-        //88 is the size of the header
-        if controlSize + diffSize + extraSize + 88 != data.count {
-            print("[!!!] Patch header sizes and actual size do not match. Cannot process.")
-            return nil
-        }
-        
-        let controlDataCompressed = Data.init(data[position..<(position + controlSize)])
-        position += controlSize
-        if !BXDIFF50_Patch.verifyPBZXBuffer(buffer: controlDataCompressed) {
-            print("[!!!] Bad control data in patch")
-            return nil
-        }
-        guard let controlData = BXDIFF50_Patch.extractPBZX(buffer: controlDataCompressed) else {
-            print("[!!!] Unable to decompress control data")
-            return nil
-        }
-        self.controlData = controlData
-
-        
-        let diffDataCompressed = Data.init(data[position..<(position + diffSize)])
-        position += diffSize
-        if !BXDIFF50_Patch.verifyPBZXBuffer(buffer: diffDataCompressed) {
-            print("[!!!] Bad control data in patch")
-            return nil
-        }
-        guard let diffData = BXDIFF50_Patch.extractPBZX(buffer: diffDataCompressed) else {
-            print("[!!!] Unable to decompress diff data")
-            return nil
-        }
-        self.diffData = diffData
-        
-        
-        let extraDataCompressed = Data.init(data[position..<(position + extraSize)])
-        position += extraSize
-        if !BXDIFF50_Patch.verifyPBZXBuffer(buffer: extraDataCompressed) {
-            print("[!!!] Bad extra data in patch")
-            return nil
-        }
-        guard let extraData = BXDIFF50_Patch.extractPBZX(buffer: extraDataCompressed) else {
-            print("[!!!] Unable to decompress extra data")
-            return nil
-        }
-        self.extraData = extraData
-    }
-    
-    fileprivate static func readUINT64(from data:Data,offset:uint64,bigEndian:Bool) -> uint64 {
-        let n = bigEndian ? Data.init(data[offset..<offset+8].reversed()) : data[offset..<offset+8]
-        return n.withUnsafeBytes { (buffer) -> uint64 in
-            return buffer.bindMemory(to: uint64.self).baseAddress!.pointee
-        }
-    }
-    
-    private static func readUINT8Array(from data:Data,count:Int,offset:uint64) -> [uint8] {
-        var results = [uint8].init(repeating: 0x0, count: count)
-        for i in 0..<count {
-            results[i] = data[Int(offset) + i]
-        }
-        
-        return results
-    }
-    
-    private static func verifyPBZXBuffer(buffer:Data) -> Bool {
+/// PBZX decomperssion utilities
+class PBZX {
+    /// Verify that a buffer is a PBZX buffer using magic bytes
+    public static func verifyPBZXBuffer(buffer:Data) -> Bool {
         if buffer.count < 34 {
             return false
         }
@@ -121,7 +20,9 @@ class BXDIFF50_Patch {
         return buffer[0..<4] == Data.init([0x70,0x62,0x7a,0x78])
     }
     
-    private static func extractPBZX(buffer:Data) -> Data? {
+    /// Attempt to extract all XZ archives contained within a PBZX buffer.
+    /// If there are multiple XZ archives, their contents will be appended
+    public static func extractPBZX(buffer:Data) -> Data? {
         var outputBuffer:Data? = nil
         if buffer[0..<4] != Data.init([0x70,0x62,0x7a,0x78]) {
             print("[!!!] Cannot extract buffer because it is not a pbzx buffer")
@@ -146,7 +47,7 @@ class BXDIFF50_Patch {
             
             let offset = uint64(xzStartMagicRange.lowerBound)
             
-            let decompressSize = readUINT64(from: buffer, offset: offset - 8, bigEndian: true)
+            let decompressSize = Utils.readUINT64(from: buffer, offset: offset - 8, bigEndian: true)
             
             print("[DEBUG] Found section @\(offset) with \(decompressSize) decompressed bytes")
             
@@ -232,4 +133,3 @@ class BXDIFF50_Patch {
         return outputBuffer
     }
 }
-
