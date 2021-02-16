@@ -17,7 +17,7 @@ If you're using Swift on Linux, your runtime must have the `CommonCrypto` and `C
 Below is the output of patching the `shargind` binary from iOS build 16F5156a (12.3 beta) on the iPhone X to build 16G5027i (12.4 beta) using the [c1cc5c87b52523ccc1d226306ec39ed389bde607.zip](https://ipsw.me/api/ios/v4/ota/download/iPhone10,6/16G5027i?prerequisite=16F5156a) OTA. To verify your build, these binaries have been included in the repo as well under /sharingd_test
 
 ```
-salman@Salmans-MacBook-Pro sharingd_test % ./bxdiff50 patch ef28d87c911f1ab1b1bc68b436346a7eb91d8d6e_sharingd_source output_test
+allison@Allisons-MacBook-Pro sharingd_test % ./bxdiff50 patch ef28d87c911f1ab1b1bc68b436346a7eb91d8d6e_sharingd_source output_test
 [INFO] Beginning to patch binary...
 [DEBUG] Found section @28 with 408 decompressed bytes
 [DEBUG] No more sections to decode.
@@ -119,7 +119,7 @@ salman@Salmans-MacBook-Pro sharingd_test % ./bxdiff50 patch ef28d87c911f1ab1b1bc
 and when comparing the SHA1 of the synthetic `output_test` to `7664ff8e1b0f6254b57bb78103158d825654b322_sharingd_target` (shargind extracted from a full upgrade/non-patch install of 16G5027i) we find that they are equal, indictating that the patch verification scheme is correct and the patch was completetly successful:
 
 ```
-salman@Salmans-MacBook-Pro sharingd_test % shasum output_test 7664ff8e1b0f6254b57bb78103158d825654b322_sharingd_target
+allison@Allisons-MacBook-Pro sharingd_test % shasum output_test 7664ff8e1b0f6254b57bb78103158d825654b322_sharingd_target
 39f32b1d9dd5f9f270c492120b15107c8d0398ae  output_test
 39f32b1d9dd5f9f270c492120b15107c8d0398ae  7664ff8e1b0f6254b57bb78103158d825654b322_sharingd_target
 ```

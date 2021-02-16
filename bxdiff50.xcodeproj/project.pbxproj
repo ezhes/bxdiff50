@@ -28,8 +28,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		228297A322FC99F3004495A5 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = ../../../../../System/Volumes/Data/Users/salman/Downloads/bxdiff50/bxdiff50/Utils.swift; sourceTree = "<group>"; };
-		228297A522FC9A0F004495A5 /* PBZX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PBZX.swift; path = ../../../../../System/Volumes/Data/Users/salman/Downloads/bxdiff50/bxdiff50/PBZX.swift; sourceTree = "<group>"; };
+		228297A322FC99F3004495A5 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = ../../../../../System/Volumes/Data/Users/allison/Downloads/bxdiff50/bxdiff50/Utils.swift; sourceTree = "<group>"; };
+		228297A522FC9A0F004495A5 /* PBZX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PBZX.swift; path = ../../../../../System/Volumes/Data/Users/allison/Downloads/bxdiff50/bxdiff50/PBZX.swift; sourceTree = "<group>"; };
 		22C4B7E322FA948F00108CAB /* bxdiff50 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = bxdiff50; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C4B7E622FA948F00108CAB /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		22DA90B322FBD8AC000A86CB /* Patch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patch.swift; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1100;
-				ORGANIZATIONNAME = "Salman Husain";
+				ORGANIZATIONNAME = "Allison Husain";
 				TargetAttributes = {
 					22C4B7E222FA948F00108CAB = {
 						CreatedOnToolsVersion = 11.0;
